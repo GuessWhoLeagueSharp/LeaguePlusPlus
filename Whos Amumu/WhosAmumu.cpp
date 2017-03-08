@@ -315,7 +315,7 @@ void AutoUlt()
 	auto TAR = GTargetSelector->FindTarget(QuickestKill, SpellDamage, R->Range());
 
 	if (AutoR->Enabled() && R->IsReady() && TAR != nullptr && GetEnemiesInRange(R->Range()) >= AutoRxNum->GetFloat() ||
-		AutoR->Enabled() && R->IsReady() && TAR != nullptr && AutoRTar[TAR->GetNetworkId()]->Enabled())
+		R->IsReady() && TAR != nullptr && AutoRTar[TAR->GetNetworkId()]->Enabled())
 	{
 		R->CastOnPlayer();
 	}
