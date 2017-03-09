@@ -1,2 +1,0 @@
-# LeaguePlusPlus
-L++ projects
