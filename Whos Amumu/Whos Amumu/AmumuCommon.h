@@ -28,7 +28,7 @@ int GetEnemiesInRangeUnit(IUnit* target, float range)
 
 	for (auto enemy : GEntityList->GetAllHeros(false, true))
 	{
-		if (enemy != nullptr && GEntityList->Player()->IsValidTarget(enemy, range))
+		if (enemy != nullptr && GEntityList->Player()->IsValidTarget(enemy, range) && enemy->GetNetworkId() != target->GetNetworkId())
 		{
 			auto distance = (target->GetPosition() - enemy->GetPosition()).Length();
 			if (distance < range)

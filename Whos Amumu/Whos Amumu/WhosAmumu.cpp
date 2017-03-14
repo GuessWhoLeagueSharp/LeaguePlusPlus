@@ -151,7 +151,7 @@ void Combo()
 			{
 				if (Q->RunPrediction(enemy, false, static_cast<eCollisionFlags>(kCollidesWithMinions | kCollidesWithYasuoWall), pred))
 				{
-					if (player->IsValidTarget(enemy, Q->Range()) && enemy->IsValidTarget() && pred->HitChance >= kHitChanceHigh)
+					if (player->IsValidTarget(enemy, Q->Range()) && pred->HitChance >= kHitChanceHigh)
 					{
 						int targetsHit = GetEnemiesInRangeUnit(enemy, R->Range());
 						if (targetsHit > maxTargetsHit || unitMostTargetsHit != nullptr && targetsHit >= maxTargetsHit && enemy->IsValidTarget())
@@ -169,7 +169,7 @@ void Combo()
 			}		
 		}
 
-		if(TQ != nullptr)
+		if(TQ != nullptr && player->IsValidTarget(TQ, Q->Range()))
 		{
 			Q->CastOnTarget(TQ, kHitChanceHigh);
 		}
@@ -225,7 +225,7 @@ void Jungleclear()
 {
 	auto player = GEntityList->Player();
 
-	if (FoundMinionsNeutral(600) && !FoundMinions(600))
+	if (FoundMinionsNeutral(1200) && !FoundMinions(600))
 	{
 		for (auto monster : GEntityList->GetAllMinions(false, false, true))
 		{
