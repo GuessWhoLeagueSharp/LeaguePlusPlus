@@ -109,7 +109,7 @@ void Menu()
 	InterruptQ = MiscMenu->CheckBox("Use Q Interrupt", true);
 	AntiGapQ = MiscMenu->CheckBox("Use Q Anti-Gapcloser", true);
 	WManaSave = MiscMenu->CheckBox("Auto Stop W", true);
-	WManaSaveM = MiscMenu->AddFloat("-> If Mp <=", 0, 100, 20);
+	WManaSaveM = MiscMenu->AddFloat("-> If Mp <", 0, 100, 15);
 
 	DrawReady = DrawingsMenu->CheckBox("Draw Ready Spells", true);
 	DrawQ = DrawingsMenu->CheckBox("Draw Q", true);
@@ -324,7 +324,7 @@ void WMana()
 {
 	auto player = GEntityList->Player();
 
-	if (WManaSave->Enabled() && player->HasBuff("AuraofDespair") && player->ManaPercent() <= WManaSaveM->GetFloat())
+	if (WManaSave->Enabled() && player->HasBuff("AuraofDespair") && player->ManaPercent() < WManaSaveM->GetFloat())
 	{
 		W->CastOnPlayer();
 	}
